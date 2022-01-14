@@ -1,0 +1,9 @@
+.nav {
+    display: flex;
+    width: 100%;
+    background-color: blanchedalmond;
+}
+.nav h3{
+padding: 0px 30px 0px 30px;
+cursor: pointer;
+}

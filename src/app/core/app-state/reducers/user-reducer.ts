@@ -1,7 +1,7 @@
 
 import { Program } from "src/app/shared/models";
 import { Action } from "../actions";
-import { USER_LIST_REQUEST, USER_LIST_SUCCESS } from "../actions/user-action";
+import { USER_DELETE, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_UPDATE } from "../actions/user-action";
 
 
 export interface UserReducerState{
@@ -20,6 +20,15 @@ export function UserReducer(state = initialState, action:Action):UserReducerStat
     switch(action.type){
         case USER_LIST_REQUEST:{
             return {...state,loading:true};
+        }
+        case USER_DELETE:{
+            const users = state.users.filter(data=> data._id !== action.payload.id);
+            return{...state, ...{users}};
+        }
+        case USER_UPDATE:{
+            const users = state.users.filter(data=> data._id !== action.payload.data._id);
+            const updatedUser = users.concat(action.payload.data);
+            return{...state, ...{users: updatedUser}};
         }
         case USER_LIST_SUCCESS:{
             const updatedUsers = state.users.concat(action.payload.data);

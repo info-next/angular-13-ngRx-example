@@ -1,4 +1,5 @@
 <div *ngFor="let p of programs">
-    <p>{{p.name}}</p>
+    <p>{{p.name}} <button (click)="delete(p._id)">DELETE</button></p> 
+    <button (click)="update(p)">UPDATE</button>
 </div>
 
