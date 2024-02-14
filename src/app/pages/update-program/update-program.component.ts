@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { UserUpdateAction } from 'src/app/core/app-state/actions/user-action';
 import { RootReducerState } from 'src/app/core/app-state/reducers';
@@ -33,7 +32,7 @@ export class UpdateProgramComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl(this.program.name ? this.program.name: null),
+      name: new FormControl(this.program.title ? this.program.title: null),
     })
    
   

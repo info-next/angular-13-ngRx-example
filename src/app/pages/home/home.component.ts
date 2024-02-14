@@ -16,18 +16,18 @@ export class HomeComponent implements OnInit {
   constructor(private apiservice : ApiserviceService, private store: Store<RootReducerState>) { }
 
   ngOnInit(): void {
-    this.getPublishedProgram()
+    this.getBlogs()
   }
 
-  getPublishedProgram() {
+  getBlogs() {
     const loading$ =this.store.select(getUserloading);
     const loaded$ =this.store.select(getUserLoaded);
     const getUserData =this.store.select(getUsers);
     combineLatest([loaded$,loading$]).subscribe((data)=>{
       if(!data[0]&& !data[1]){
         this.store.dispatch(new UserListRequestAction());
-        this.apiservice.getPublishedProgram('1', '15', 'published').subscribe((res:any) => {   
-            this.store.dispatch(new UserListSuccessAction({data:res.items}))
+        this.apiservice.getBlogs().subscribe((res:any) => {   
+            this.store.dispatch(new UserListSuccessAction({data:res}))
           });
       }
     })

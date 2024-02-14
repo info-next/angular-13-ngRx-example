@@ -1,4 +1,3 @@
-import { Program } from "src/app/shared/models";
 
 export const USER_LIST_REQUEST = 'user list request';
 export const USER_LIST_SUCCESS = 'user list success';
@@ -23,7 +22,7 @@ export class UserDeleteAction{
 
 export class UserUpdateAction{
     readonly type = USER_UPDATE
-   constructor(public payload?: {data:Program}){
+   constructor(public payload?: {data:any}){
        
    }
 }
@@ -32,7 +31,7 @@ export class UserListSuccessAction{
     readonly type = USER_LIST_SUCCESS
    
 
-    constructor(public payload?:{data:Program[]  }){
+    constructor(public payload?:{data:any[]  }){
 
     }
 }

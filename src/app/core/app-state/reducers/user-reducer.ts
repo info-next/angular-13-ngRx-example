@@ -1,5 +1,4 @@
 
-import { Program } from "src/app/shared/models";
 import { Action } from "../actions";
 import { USER_DELETE, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_UPDATE } from "../actions/user-action";
 
@@ -7,7 +6,7 @@ import { USER_DELETE, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_UPDATE } from "
 export interface UserReducerState{
     loading: boolean;
     loaded: boolean;
-    users: Program[];
+    users: any[];
 }
 
 const initialState: UserReducerState = {
@@ -22,11 +21,11 @@ export function UserReducer(state = initialState, action:Action):UserReducerStat
             return {...state,loading:true};
         }
         case USER_DELETE:{
-            const users = state.users.filter(data=> data._id !== action.payload.id);
+            const users = state.users.filter(data=> data.id !== action.payload.id);
             return{...state, ...{users}};
         }
         case USER_UPDATE:{
-            const users = state.users.filter(data=> data._id !== action.payload.data._id);
+            const users = state.users.filter(data=> data.id !== action.payload.id);
             const updatedUser = users.concat(action.payload.data);
             return{...state, ...{users: updatedUser}};
         }
